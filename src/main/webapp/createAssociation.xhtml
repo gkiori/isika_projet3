@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Connexion</title>
+    <style type="text/css">
+        .form-signup {
+            margin: 0 auto;
+            max-width: 330px;
+            padding: 15px;
+            text-align: center;
+        }
+    </style>
+</h:head>
+<h:body>
+    <ui:insert name="header">
+        <ui:include src="header.xhtml" />
+    </ui:insert>
+    <b:container>
+        <h:form styleClass="form-signup" prependId="false">
+            <h2 >Se connecter</h2>
+            <b:inputText id="Username" value="#{createAssociationBean.associationForm.name}" placeholder="Name">
+                <f:facet name="prepend">
+                    <b:iconAwesome name="user" />
+                </f:facet>
+            </b:inputText>
+            <b:inputText id="email" value="#{createAssociationBean.associationForm.email}" placeholder="E-mail">
+                <f:facet name="prepend">
+                    <b:iconAwesome name="at" />
+                </f:facet>
+            </b:inputText>
+            <b:inputTextarea id="phone" value="#{createAssociationBean.associationForm.description}" placeholder="Description">
+                <f:facet name="prepend">
+                    <b:iconAwesome name="phone" />
+                </f:facet>
+            </b:inputTextarea>
+            <b:commandButton look="primary btn-block" value="Créer un compte" iconAwesome="user-plus" size="lg" action="#{createAssociationBean.create()}" />
+        </h:form>
+    </b:container>
+
+    <ui:insert name="footer">
+        <ui:include src="footer.xhtml" />
+    </ui:insert>
+</h:body>
+</html>

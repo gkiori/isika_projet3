@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
+<body>
+    <ui:composition>
+        <h:form>
+            <b:navBar brand="P3G2" brandHref="index.xhtml" fluid="true">
+                <b:navbarLinks>
+                    <b:navLink value="Accueil" href="index.xhtml" />
+                    <b:navLink value="Association" href="associations.xhtml" />
+                    <b:navLink value="Boutique" href="shop.xhtml" />
+                    <b:navLink value="Crowdfunding" href="crowdfunding.xhtml" />
+                </b:navbarLinks>
+                <b:navbarLinks pull="right">
+                    <ui:fragment rendered="#{homeBean.connectedUser == null}">
+                        <b:navLink value="Inscriver votre asso" href="login.xhtml" />
+                        <b:navLink value="Créer un compte" href="createAccount.xhtml" />
+                        <b:navLink value="Se connecter" href="login.xhtml" />
+                    </ui:fragment>
+                    <ui:fragment rendered="#{homeBean.connectedUser != null}">
+                        <b:navLink value="Inscriver votre asso" href="createAssociation.xhtml" />
+                        <b:dropMenu value="Bienvenue #{homeBean.getConnectedUser()}" >
+                            <b:navLink value="Profile" href="#" />
+                            <b:navLink value="Dashboard" href="#" />
+                            <b:navLink/>
+                            <b:navCommandLink value="Logout" action="#{homeBean.doLogout()}" ajax="false" />
+                            <!-- <h:form>
+                                 <h:commandButton value="Logout" action="#{homeBean.doLogout()}" />
+                             </h:form>-->
+                        </b:dropMenu>
+                    </ui:fragment>
+                </b:navbarLinks>
+            </b:navBar>
+        </h:form>
+    </ui:composition>
+</body>
+</html>
